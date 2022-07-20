@@ -24,12 +24,8 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
         ```
         node -v
         ```
-2. OpenLayers 설치 - ol 패키지
 
-    ```
-    npm install ol
-    ```
-3. SuperMap iClient 설치
+2. SuperMap iClient 설치
 
     ```
     npm install @supermap/iclient-leaflet
@@ -37,6 +33,17 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
     npm install @supermap/iclient-mapboxgl
     npm install @supermap/iclient-classic
     ```
+
+3. OpenLayers 설치 - ol 패키지
+
+    SuperMap iClient 라이브러리 Root에 OpenLayers 설치 
+
+    dependencies 자동추가하기 위함
+
+    ```
+    npm install ol
+    ```
+
 4. @supermap/babel-plugin-import 설치
     
     Babel은 현재 및 이전 브라우저 또는 환경에서 ECMAScript 2015+ 코드를 이전 버전의 JavaScript로 변환하는 데 주로 사용되는 도구
@@ -46,7 +53,7 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
     ```
     .babelrc 설정
 
-    * 라이브러리 Root에 .babelrc 파일 생성
+    * SuperMap iClient 라이브러리 Root에 .babelrc 파일 생성
     * 다음 입력 후 저장
         ```
         {
