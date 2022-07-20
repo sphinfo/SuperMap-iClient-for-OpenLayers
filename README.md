@@ -27,6 +27,8 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
 
 2. SuperMap iClient 설치
 
+    SuperMap iClient 라이브러리 Root : .\SuperMap-iClient-for-OpenLayers
+
     ```
     npm install @supermap/iclient-leaflet
     npm install @supermap/iclient-ol
@@ -66,3 +68,8 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
             ]
         }
         ```
+5. Source 폴더 생성
+    
+    폴더명 : src
+    
+    폴더경로 : .\SuperMap-iClient-for-OpenLayers\src

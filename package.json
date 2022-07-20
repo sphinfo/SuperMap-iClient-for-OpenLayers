@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@supermap/iclient-classic": "^11.0.0",
+    "@supermap/iclient-leaflet": "^11.0.0",
+    "@supermap/iclient-mapboxgl": "^11.0.0",
+    "@supermap/iclient-ol": "^11.0.0",
+    "ol": "^6.15.1"
+  }
+}
