@@ -73,3 +73,49 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
     폴더명 : src
     
     폴더경로 : .\SuperMap-iClient-for-OpenLayers\src
+    
+    테스트 JS : test.js
+
+6. parcel-bundler 추가 및 npm install 실행
+    * 대상 파일 : package.json
+    * "devDependencies"
+        - "parcel-bundler": "^1.12.5"
+    * "scripts"
+        - "dev": "parcel index.html"
+        - "build": "parcel build index.html"
+
+        ```
+        {
+            "dependencies": {
+                "@supermap/iclient-classic": "^11.0.0",
+                "@supermap/iclient-leaflet": "^11.0.0",
+                "@supermap/iclient-mapboxgl": "^11.0.0",
+                "@supermap/iclient-ol": "^11.0.0",
+                "ol": "^6.15.1"
+                
+            },
+            "devDependencies": {
+                "@babel/cli": "^7.18.9",
+                "@babel/core": "^7.18.9",
+                "@supermap/babel-plugin-import": "^0.0.1",
+                "parcel-bundler": "^1.12.5"
+            },
+            "type": "module",
+            "scripts": {
+                "dev": "parcel index.html",
+                "build": "parcel build index.html"
+            }
+        }
+
+        ```
+        ```
+        npm install
+        ```
+7. Map 호출 테스트
+
+    * index.html
+    * src/test.js
+    * 소스 build
+        ```
+        npm run dev
+        ```

@@ -5,5 +5,17 @@
     "@supermap/iclient-mapboxgl": "^11.0.0",
     "@supermap/iclient-ol": "^11.0.0",
     "ol": "^6.15.1"
+    
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@supermap/babel-plugin-import": "^0.0.1",
+    "parcel-bundler": "^1.12.5"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   }
 }
