@@ -48809,7 +48809,7 @@ class TileSuperMapRest extends _TileImage.default {
 }
 
 exports.TileSuperMapRest = TileSuperMapRest;
-},{"@supermap/iclient-common/security/SecurityManager":"node_modules/@supermap/iclient-common/security/SecurityManager.js","@supermap/iclient-common/REST":"node_modules/@supermap/iclient-common/REST.js","@supermap/iclient-common/commontypes/Util":"node_modules/@supermap/iclient-common/commontypes/Util.js","@supermap/iclient-common/iServer/ServerGeometry":"node_modules/@supermap/iclient-common/iServer/ServerGeometry.js","../core/Util":"node_modules/@supermap/iclient-ol/core/Util.js","ol/source/TileImage":"node_modules/@supermap/iclient-ol/node_modules/ol/source/TileImage.js","ol/geom/Geometry":"node_modules/@supermap/iclient-ol/node_modules/ol/geom/Geometry.js","ol/format/GeoJSON":"node_modules/@supermap/iclient-ol/node_modules/ol/format/GeoJSON.js","ol/size":"node_modules/@supermap/iclient-ol/node_modules/ol/size.js","ol/tilegrid":"node_modules/@supermap/iclient-ol/node_modules/ol/tilegrid.js","ol/tilegrid/TileGrid":"node_modules/@supermap/iclient-ol/node_modules/ol/tilegrid/TileGrid.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@supermap/iclient-common/security/SecurityManager":"node_modules/@supermap/iclient-common/security/SecurityManager.js","@supermap/iclient-common/REST":"node_modules/@supermap/iclient-common/REST.js","@supermap/iclient-common/commontypes/Util":"node_modules/@supermap/iclient-common/commontypes/Util.js","@supermap/iclient-common/iServer/ServerGeometry":"node_modules/@supermap/iclient-common/iServer/ServerGeometry.js","../core/Util":"node_modules/@supermap/iclient-ol/core/Util.js","ol/source/TileImage":"node_modules/@supermap/iclient-ol/node_modules/ol/source/TileImage.js","ol/geom/Geometry":"node_modules/@supermap/iclient-ol/node_modules/ol/geom/Geometry.js","ol/format/GeoJSON":"node_modules/@supermap/iclient-ol/node_modules/ol/format/GeoJSON.js","ol/size":"node_modules/@supermap/iclient-ol/node_modules/ol/size.js","ol/tilegrid":"node_modules/@supermap/iclient-ol/node_modules/ol/tilegrid.js","ol/tilegrid/TileGrid":"node_modules/@supermap/iclient-ol/node_modules/ol/tilegrid/TileGrid.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -48841,7 +48841,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -48876,13 +48876,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/ol/ol.css":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/ol/ol.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/ol/Disposable.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/ol/Disposable.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101958,7 +101958,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6389" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1412" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
