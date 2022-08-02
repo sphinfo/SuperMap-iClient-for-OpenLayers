@@ -8,26 +8,34 @@ import {getRenderPixel} from 'ol/render';
 //base
 var baseLayer = new TileLayer({
     source: new XYZ({
-        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=[your own API key]&format=png&basemap=GRAPHIC&center=126.978275264,37.566642192&crs=epsg:4326&zoom=16&size=400,400'
+        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=[your own API key]&format=png&basemap=GRAPHIC&center=126.978275264,37.566642192&crs=epsg:4326&zoom=7&size=1024,1024'
+        ,wrapX: false
+        ,tileSize: [1024,1024]
     })
 });
 
 //회색지도
 var glayLayer = new TileLayer({
     source: new XYZ({
-        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=[your own API key]&format=png&basemap=GRAPHIC_GRAY&center=126.978275264,37.566642192&crs=epsg:4326&zoom=16&size=400,400'
+        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=[your own API key]&format=png&basemap=GRAPHIC_GRAY&center=126.978275264,37.566642192&crs=epsg:4326&zoom=7&size=1024,1024'
+        ,wrapX: false
+        ,tileSize: [1024,1024]
     })
 });
 
+//Map
 var map = new Map({
     view: new View({
         center: [0, 0],
-        zoom: 2        
+        zoom: 2
     }),
-    layers: [baseLayer,glayLayer],
-    target: 'map'
+    layers: [baseLayer, glayLayer],
+    target: 'map',
+    controls:[],
+    interactions :[]
 });
 
+//swipe 기능설정
 var swipe = document.getElementById('swipe');
 
 glayLayer.on('prerender', function (event) {
