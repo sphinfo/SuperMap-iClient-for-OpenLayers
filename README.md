@@ -119,3 +119,35 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
         ```
         npm run dev
         ```
+8. 정적파일 (이미지) 연결
+    * Point Layer Style의 Icon으로 이미지를 지정할 경우 정적 파일 복사 ParcelJS 플러그인 설치 필요
+    * 설치
+        ```
+        npm install -D parcel-plugin-static-files-copy
+        ```
+    *  static 폴더 생성 후 이미지 추가
+        
+        * 폴더 경로 : .\SuperMap-iClient-for-OpenLayers\static
+    
+    * package.json 추가
+
+        ```
+          "staticFiles" : {
+             "staticPath" : "static"
+           }
+        ```
+    * 소스 이미지 적용 예
+
+        ```
+        const point = new Point([104, 30]);
+        const pointFeature= new Feature(point);
+        pointFeature.setStyle(
+            new Style({
+                image: new Icon({
+                    scale: 0.5,
+                    src: 'selectedPoints.png'
+                })
+            })
+        );
+        ```
+    * 빌드 시 dist 폴더에 이미지생성되어 있으면 정상
