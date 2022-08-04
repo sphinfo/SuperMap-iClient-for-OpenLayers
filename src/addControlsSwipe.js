@@ -8,7 +8,7 @@ import {getRenderPixel} from 'ol/render';
 //base
 var baseLayer = new TileLayer({
     source: new XYZ({
-        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=[your own API key]&format=png&basemap=GRAPHIC&center=126.978275264,37.566642192&crs=epsg:4326&zoom=7&size=1024,1024'
+        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=A586C94C-FD6D-34E7-B324-71746F9AB3BA&format=png&basemap=GRAPHIC&center=126.978275264,37.566642192&crs=epsg:4326&zoom=7&size=1024,1024'
         ,wrapX: false
         ,tileSize: [1024,1024]
     })
@@ -17,7 +17,7 @@ var baseLayer = new TileLayer({
 //회색지도
 var glayLayer = new TileLayer({
     source: new XYZ({
-        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=[your own API key]&format=png&basemap=GRAPHIC_GRAY&center=126.978275264,37.566642192&crs=epsg:4326&zoom=7&size=1024,1024'
+        url: 'https://api.vworld.kr/req/image?service=image&version=2.0&request=getmap&key=A586C94C-FD6D-34E7-B324-71746F9AB3BA&format=png&basemap=GRAPHIC_GRAY&center=126.978275264,37.566642192&crs=epsg:4326&zoom=7&size=1024,1024'
         ,wrapX: false
         ,tileSize: [1024,1024]
     })
@@ -32,7 +32,8 @@ var map = new Map({
     layers: [baseLayer, glayLayer],
     target: 'map',
     controls:[],
-    interactions :[]
+    interactions :[],
+    
 });
 
 //swipe 기능설정
