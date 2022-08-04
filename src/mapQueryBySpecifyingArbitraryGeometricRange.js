@@ -65,8 +65,8 @@ function query(){
     //조회대상
     var param = new GetFeaturesByGeometryParameters({
         datasetNames: ["World:Capitals"], //[Datasource Name:Dataset Name]
-        geometry: polygon,
-        spatialQueryMode: "INTERSECT"
+        geometry: polygon, //공간영역
+        spatialQueryMode: "INTERSECT" //공간쿼리모드
     });
 
     new FeatureService(dataUrl).getFeaturesByGeometry(param, function (serviceResult) {
