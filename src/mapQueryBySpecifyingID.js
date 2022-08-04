@@ -33,7 +33,7 @@ query();
 
 function query(){
 
-    //파라메터 정의
+    //조회대상
     var param = new GetFeaturesByIDsParameters({
         IDs: [233, 234], //Dataset의 SmID
         datasetNames: ["World:Countries"] //[Datasource Name:Dataset Name]
