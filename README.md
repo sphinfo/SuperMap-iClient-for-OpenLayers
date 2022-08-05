@@ -151,3 +151,29 @@ OpenLayers용 SuperMap iClient 개발 튜토리얼
         );
         ```
     * 빌드 시 dist 폴더에 이미지생성되어 있으면 정상
+
+9. bootstrap 설치
+    
+    * index.html
+        
+        [참고] Uncaught Error : Bootstrap's JavaScript requires jQuery.
+        
+        => jquery가 먼저 로드되어야 함
+        
+        => jquery-3.4.1.js를 상단에 배치한 다음 bootstrap.min.js 배치
+        
+        ```
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        ```
+    * npm 설치
+
+        ```
+        npm install bootstrap
+        ```
