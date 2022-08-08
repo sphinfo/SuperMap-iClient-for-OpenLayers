@@ -47,7 +47,7 @@ function initResultInfoWin() {
     map.addControl(info);
 }
 
-//필드 정보 가져오기
+//레이어 정보 가져오기
 function showLayersInfo() {
 
     var subLayer;
@@ -62,8 +62,10 @@ function showLayersInfo() {
             
             subLayer = layers[i];
 
+            //레이어 타입이 SuperMap UGC 유형 레이어인가...
+            //SuperMap UGC 유형 레이어 : vector layer, Grid layer, image layer
             if ("UGC" == subLayer.type) {
-                //필드 쿼리 통계에 대한 데이터소스, 데이터 세트 정보
+                
                 if (subLayer.datasetInfo.name && subLayer.datasetInfo.dataSourceName) {
                     
                     layersName[i] = {
@@ -79,6 +81,7 @@ function showLayersInfo() {
     });
 }
 
+//검색할 데이터셋 필드정보 가져오기
 function getFields() {
 
     var name = 'continent_T@World';
@@ -89,7 +92,6 @@ function getFields() {
         dataInfo = layersName[i];
         
         if (dataInfo.layerName == name) {
-            //데이터 세트, 데이터 소스, 쿼리 필드 정보 설정
             currentData = dataInfo;
 
             var param = new FieldParameters({
@@ -106,19 +108,19 @@ function getFields() {
 
 function fieldStatistic() {
 
-    var fieldName = 'SmID';
+    var fieldName = 'SmID'; //조회대상 필드
 
     var param = new FieldStatisticsParameters({
         datasource: currentData.dataSourceName,
         dataset: currentData.dataSetName,
         fieldName: fieldName,
-        statisticMode: [
-            StatisticMode.MAX,
-            StatisticMode.MIN,
-            StatisticMode.SUM,
-            StatisticMode.AVERAGE,
-            StatisticMode.STDDEVIATION,
-            StatisticMode.VARIANCE
+        statisticMode: [ //필드 통계 방법 유형
+            StatisticMode.MAX, //조회대상 필드의 최대값
+            StatisticMode.MIN,  //조회대상 필드의 최소값
+            StatisticMode.SUM,  //조회대상 필드의 합계
+            StatisticMode.AVERAGE,  //조회대상 필드의 평균
+            StatisticMode.STDDEVIATION, //조회대상 필드의 표준편차
+            StatisticMode.VARIANCE  //조회대상 필드의 분산
         ]
     });
 
@@ -129,6 +131,7 @@ function fieldStatistic() {
     }
 }
 
+//popup 표시
 function showResult(serviceResult) {
 
     if (!serviceResult) { return; }
@@ -156,5 +159,4 @@ function showResult(serviceResult) {
     content.innerHTML = innerHTMLStr;
     
     map.addControl(info);
-
 }

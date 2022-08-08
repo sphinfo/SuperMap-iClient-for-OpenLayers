@@ -17,7 +17,7 @@ var layer = new TileLayer({
       source: new TileSuperMapRest({
           url: url,
           wrapX: true,
-          projection: "EPSG:4326"
+          projection: 'EPSG:4326'
       })
 });
 

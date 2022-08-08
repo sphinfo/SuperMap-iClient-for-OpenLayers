@@ -14,7 +14,7 @@ var map = new Map({
   target: 'map',
   view: new View({
       center: [0, 0],
-      zoom: 14,
+      zoom: 1,
       projection: 'EPSG:4326'
   })
 });

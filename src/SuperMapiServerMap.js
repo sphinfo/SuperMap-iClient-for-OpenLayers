@@ -17,9 +17,9 @@ var map = new Map({
 var layer = new TileLayer({
       source: new TileSuperMapRest({
           url: url, //SuperMap iServer에 발행된 맵서비스 주소
-          wrapX: true, //세계를 가로로 감쌀지 여부
-          projection: 'EPSG:4326' //레이어 좌표계
-      })
+          wrapX: true //타일을 반경선 너머로 렌더링
+      }),
+      projection: 'EPSG:4326' //레이어 좌표계
 });
 
 map.addLayer(layer);
