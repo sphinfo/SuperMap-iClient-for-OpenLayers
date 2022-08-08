@@ -3,7 +3,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import { TileSuperMapRest, GetGridCellInfosParameters, GridCellInfosService, } from '@supermap/iclient-ol';
-import { Overlay } from 'ol';
+import Overlay from 'ol/Overlay';
 
 //지도 위에 표시할 오버레이 설정
 const container = document.getElementById('popup');
