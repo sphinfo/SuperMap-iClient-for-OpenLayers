@@ -41,7 +41,7 @@ map.addControl(info);
 //그리는 개체 layer 추가
 var vectorSource = new VectorSource({
     wrapX: false
-})
+});
 
 var vectorLayer = new VectorLayer({
     source: vectorSource
@@ -52,6 +52,7 @@ map.addLayer(vectorLayer);
 //그리기 이벤트 설정
 var draw;
 var snap;
+//버튼 그룹 (Draw Point/Draw Line/Draw Polygon/Draw Circle/Not Draw/Clear)
 var buttons = $('.btn-group').children();
 
 buttons.map(function (key) {
@@ -77,7 +78,7 @@ buttons.map(function (key) {
         draw = new Draw({
             source: vectorSource,
             type: buttons[key].value,
-            snapTolerance: 20,
+            snapTolerance: 20, //그리기 마무리에 스냅하기 위한 픽셀 거리
             freehand: true //필기그리기 
         });
 
@@ -86,12 +87,13 @@ buttons.map(function (key) {
         //그리는 동안 스냅 처리
         snap = new Snap({
             source: vectorSource
-          });
+        });
           
         map.addInteraction(snap);
     });
 });
 
+//그리기/스냅 클리어
 function clearInteraction() {
 
     if (draw) {
