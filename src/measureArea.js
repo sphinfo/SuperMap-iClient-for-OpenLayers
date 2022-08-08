@@ -31,7 +31,7 @@ map.addLayer(layer);
 //거리측정 layer추가
 var vectorSource = new VectorSource({
     wrapX: false
-})
+});
 
 var vectorLayer = new VectorLayer({
     source: vectorSource
