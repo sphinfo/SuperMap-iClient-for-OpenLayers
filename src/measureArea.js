@@ -55,8 +55,8 @@ interaction.on('drawend', function () {
     
     var distanceMeasureParam = new MeasureParameters(feature.getGeometry());
     
-    new MeasureService(url, {measureMode: ""}).measureDistance(distanceMeasureParam, function (serviceResult) {
-        alert(serviceResult.result.distance + "sq.m", true);
+    new MeasureService(url, {measureMode: ""}).measureArea(distanceMeasureParam, function (serviceResult) {
+        alert(serviceResult.result.area + "sq.m", true);
     });
 });
 
