@@ -21,7 +21,8 @@ const url = "https://iserver.supermap.io/iserver/services/map-world/rest/maps/Wo
 const dataUrl = "https://iserver.supermap.io/iserver/services/data-world/rest/data";
 
 let instance = null;
-
+let measureTooltipElement;
+let measureTooltip;
 export class MapView {
 
     constructor(target) {
@@ -59,15 +60,12 @@ export class MapView {
             this.vectorSource = new VectorSource({
                 wrapX: false
             });
-        
+            this.mapView = this.map.getView();
+
             instance = this;        
         }
         
         return instance;
-    }
-
-    getMapView() {
-        return this.map.getView();
     }
 
     setDragPanInteractions() {
@@ -85,22 +83,43 @@ export class MapView {
         }
     }
 
+    createMeasureTooltip() {
+
+        if (measureTooltipElement) {
+          measureTooltipElement.parentNode.removeChild(measureTooltipElement);
+        } 
+        
+        measureTooltipElement = document.createElement('div');
+        measureTooltipElement.className = 'ol-tooltip ol-tooltip-measure';
+
+        measureTooltip = new Overlay({
+            element: measureTooltipElement,
+            offset: [0, -15],
+            positioning: 'bottom-center',
+            stopEvent: false,
+            insertFirst: false,
+        });
+        
+        this.map.addOverlay(measureTooltip);
+    }
+
     measureMap(option) {
         let draw;
-        let feature;
+        let sketch;
         let listener;
         let geom;
 
-        let tooltip = new Overlay({
-                element: option.tooltipElement,
-                offset: [0, -15],
-                positioning: 'bottom-center',
-                stopEvent: false,
-                insertFirst: false,
-            });
-            
-        this.map.addOverlay(tooltip);
+        //tooltip 생성
+        instance.createMeasureTooltip();
+    
+        //vectorLayer 생성
+        let vectorLayer = new VectorLayer({
+            source: instance.vectorSource
+        });
 
+        this.map.addLayer(vectorLayer);
+
+        //Draw Interaction 존재여부 체크 -> 있으면 삭제
         const isDraw = (interaction) => interaction instanceof Draw;
         const index = instance.interactions.findIndex(isDraw);
 
@@ -109,12 +128,7 @@ export class MapView {
             this.map.removeInteraction(draw);
         }
 
-        let vectorLayer = new VectorLayer({
-            source: instance.vectorSource
-        });
-
-        this.map.addLayer(vectorLayer);
-
+        //Draw 생성
         draw = new Draw({
             source: instance.vectorSource,
             type: option.drawType, //도형 유형
@@ -140,51 +154,52 @@ export class MapView {
         });
 
         draw.on('drawstart', function(event){
-            feature = event.feature;
+            sketch = event.feature;
 
-            listener = feature.getGeometry().on('change', function(event){
+            listener = sketch.getGeometry().on('change', function(event){
                 geom = event.target;
             });
         });
 
         draw.on('drawend', function(){
-            const measureParms = new MeasureParameters(feature.getGeometry());
-            
-            let result;
 
+            const measureParms = new MeasureParameters(sketch.getGeometry());
+            
             if (option.drawType == 'LineString')
             {
+                //거리측정
                 new MeasureService(url).measureDistance(
                     measureParms, function(serviceResult) {
-                        result = serviceResult.result.distance + 'm';
-                        console.log(result);
 
-                        option.tooltipElement.innerHTML = result;
-                        tooltip.setPosition(geom.getLastCoordinate());
-            
-                        option.tooltipElement.className = 'ol-tooltip ol-tooltip-static';
-                        tooltip.setOffset([0, -7]);            
-                        
-                        feature = null;
+                        measureTooltipElement.innerHTML = serviceResult.result.distance + 'm';
+                        measureTooltip.setPosition(geom.getLastCoordinate());
+        
+                        measureTooltipElement.className = 'ol-tooltip ol-tooltip-static';
+                        measureTooltip.setOffset([0, -7]); 
+        
+                        sketch = null;
+                        measureTooltipElement = null;
+                        instance.createMeasureTooltip();
                         unByKey(listener);
                     });
+
             } else {
+                //면적측정
                 new MeasureService(url).measureArea(
                     measureParms, function(serviceResult) {
-                        result = serviceResult.result.area + 'sq.m';
-                        console.log(result);
 
-                        option.tooltipElement.innerHTML = result;
-                        tooltip.setPosition(geom.getLastCoordinate());
-            
-                        option.tooltipElement.className = 'ol-tooltip ol-tooltip-static';
-                        tooltip.setOffset([0, -7]);
-
-                        feature = null;
+                        measureTooltipElement.innerHTML = serviceResult.result.area + 'sq.m';
+                        measureTooltip.setPosition(geom.getLastCoordinate());
+        
+                        measureTooltipElement.className = 'ol-tooltip ol-tooltip-static';
+                        measureTooltip.setOffset([0, -7]); 
+        
+                        sketch = null;
+                        measureTooltipElement = null;
+                        instance.createMeasureTooltip();
                         unByKey(listener);
                     });
             }
-
         });
 
         this.map.addInteraction(draw);
